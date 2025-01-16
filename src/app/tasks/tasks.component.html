@@ -1,0 +1,137 @@
+<div class="container mx-auto mt-8 px-4">
+  <!-- Table display -->
+  <p-table [value]="tasks" styleClass="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
+    <ng-template pTemplate="header">
+      <tr class="bg-gray-50 border-b">
+        <th class="text-left p-4 font-semibold text-gray-700">Title</th>
+        <th class="text-left p-4 font-semibold text-gray-700">Type</th>
+        <th class="text-left p-4 font-semibold text-gray-700">Status</th>
+        <th class="text-left p-4 font-semibold text-gray-700">Creation Date</th>
+        <th class="text-left p-4 font-semibold text-gray-700">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-task>
+      <tr class="border-b hover:bg-gray-50">
+        <td class="p-4">{{ task.title }}</td>
+        <td class="p-4">{{ task.type }}</td>
+        <td class="p-4">{{ task.status }}</td>
+        <td class="p-4">{{ task.creationDate | date: 'short' }}</td>
+        <td class="p-4 flex space-x-2">
+          <!-- Edit Button -->
+          <button 
+            pButton 
+            icon="pi pi-pencil" 
+            label="Edit" 
+            iconPos="left"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg transition-all duration-200"
+            (click)="showEditDialog(task)">
+          </button>
+          <!-- Delete Button with Confirmation -->
+          <button 
+            pButton 
+            icon="pi pi-trash" 
+            label="Delete" 
+            iconPos="left"
+            class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg transition-all duration-200"
+            (click)="confirmDelete($event, task.id)">
+          </button>
+
+          <!-- Toast and Confirmation Popup -->
+          <p-toast></p-toast>
+          <p-confirmpopup></p-confirmpopup>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <!-- Add Task Button -->
+  <button 
+    pButton 
+    type="button" 
+    label="Add Task" 
+    icon="pi pi-plus" 
+    iconPos="left"
+    class="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-all duration-200" 
+    (click)="showAddDialog()">
+  </button>
+
+  <!-- Add/Edit Dialog -->
+  <p-dialog 
+    header="{{ isEditMode ? 'Edit Task' : 'Add New Task' }}" 
+    [(visible)]="displayAddDialog" 
+    [modal]="true" 
+    [closable]="false"
+    [closeOnEscape]="false"
+    [dismissableMask]="false"
+    styleClass="w-full max-w-2xl"
+    [style]="{width: '600px', zIndex: 1000}"
+    [baseZIndex]="10000">
+    
+    <div class="space-y-6 p-4">
+      <!-- Title Input -->
+      <div class="space-y-2">
+        <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+        <input 
+          id="title" 
+          type="text" 
+          pInputText 
+          [(ngModel)]="newTask.title" 
+          class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Type Dropdown -->
+      <div class="space-y-2">
+        <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+        <p-dropdown 
+          [options]="typeOptions" 
+          [(ngModel)]="newTask.type" 
+          [showClear]="true" 
+          placeholder="Select Type"
+          [style]="{width: '100%'}"
+          [panelStyle]="{width: '100%', zIndex: 1100}"
+          appendTo="body"
+          styleClass="w-full">
+        </p-dropdown>
+      </div>
+
+      <!-- Status Dropdown -->
+      <div class="space-y-2">
+        <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+        <p-dropdown 
+          [options]="statusOptions" 
+          [(ngModel)]="newTask.status" 
+          [showClear]="true" 
+          placeholder="Select Status"
+          [style]="{width: '100%'}"
+          [panelStyle]="{width: '100%', zIndex: 1100}"
+          appendTo="body"
+          styleClass="w-full">
+        </p-dropdown>
+      </div>
+    </div>
+
+    <!-- Dialog Footer -->
+    <ng-template pTemplate="footer">
+      <div class="flex justify-end space-x-3 p-4 bg-gray-50">
+        <button 
+          pButton 
+          type="button" 
+          label="Cancel" 
+          icon="pi pi-times" 
+          iconPos="left"
+          class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-all duration-200" 
+          (click)="hideAddDialog()">
+        </button>
+        <button 
+          pButton 
+          type="button" 
+          label="{{ isEditMode ? 'Update' : 'Add' }}" 
+          icon="pi pi-check" 
+          iconPos="left"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all duration-200" 
+          (click)="isEditMode ? updateTask() : addTask()">
+        </button>
+      </div>
+    </ng-template>
+  </p-dialog>
+</div>

@@ -1,0 +1,17 @@
+<!-- dashboard.component.html -->
+<div class="flex gap-4">
+    <!-- Chart for Tasks by Status -->
+    <div class="w-1/2">
+      <p-card header="Tasks by Status" class="shadow-md">
+        <p-chart type="bar" [data]="basicDataByStatus" [options]="basicOptions" class="w-full h-48"></p-chart>
+      </p-card>
+    </div>
+  
+    <!-- Chart for Tasks by Type -->
+    <div class="w-1/2">
+      <p-card header="Tasks by Type" class="shadow-md">
+        <p-chart type="bar" [data]="basicDataByType" [options]="basicOptions" class="w-full h-48"></p-chart>
+      </p-card>
+    </div>
+  </div>
+  
