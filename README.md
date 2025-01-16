@@ -43,38 +43,41 @@ cd task-management-system-frontend
 ### 2. Install Dependencies:  npm install
 ### 3. Start the Development Server: ng serve
 ## Project Structure
-Project Structure
-src/app
-components: Contains Angular components like HomeComponent, TaskComponent, DashboardComponent, etc.
-services: Service classes responsible for API communication, such as AuthService, TaskService, etc.
-guards: Contains guards to manage route access based on user roles (e.g., AuthGuard).
-models: Contains TypeScript interfaces for data structures, such as Task, User, etc.
-assets: Static files like images, logos, and styles.
-src/environments
-Environment configuration files (environment.ts and environment.prod.ts) for development and production setups.
+
+- **src/app**
+  - **components**: Contains Angular components like `HomeComponent`, `TaskComponent`, `DashboardComponent`, etc.
+  - **services**: Service classes responsible for API communication, such as `AuthService`, `TaskService`, etc.
+  - **guards**: Contains guards to manage route access based on user roles (e.g., `AuthGuard`).
+  - **models**: Contains TypeScript interfaces for data structures, such as `Task`, `User`, etc.
+  - **assets**: Static files like images, logos, and styles.
+- **src/environments**
+  - Environment configuration files (`environment.ts` and `environment.prod.ts`) for development and production setups.
+
 ## How to Use
- ### Login:
 
-Use the login form to authenticate with the backend using valid credentials.
-Roles (e.g., Admin, User) determine the available functionality.
-Dashboard:
+### Login:
+- Use the login form to authenticate with the backend using valid credentials.
+- Roles (e.g., Admin, User) determine the available functionality.
 
-View the dashboard with statistics such as total tasks, completed tasks, and pending tasks displayed in dynamic charts.
+### Dashboard:
+- View the dashboard with statistics such as total tasks, completed tasks, and pending tasks displayed in dynamic charts.
+
 ### Task Management:
+- Add, edit, and delete tasks.
+- Confirm actions using confirmation dialogs powered by PrimeNG.
 
-Add, edit, and delete tasks.
-Confirm actions using confirmation dialogs powered by PrimeNG.
-Settings:
+### Settings:
+- Update user preferences and manage settings for your account.
 
-Update user preferences and manage settings for your account.
 ### Logout:
+- Click the logout button in the top-right corner to log out securely. A confirmation dialog will prompt before logout.
 
-Click the logout button in the top-right corner to log out securely. A confirmation dialog will prompt before logout.
 ## Testing
-The application is tested in the following environments:
-### Browsers: Chrome, Brave and Edge.
-## Future Enhancements
-Implement persistent storage with a backend database (currently using H2 in-memory database for backend).
-Add real-time updates (e.g., using WebSockets).
-Implement unit tests and end-to-end testing for frontend components.
 
+The application is tested in the following environments:
+- **Browsers**: Chrome, Brave, and Edge.
+
+## Future Enhancements
+- Implement persistent storage with a backend database (currently using H2 in-memory database for the backend).
+- Add real-time updates (e.g., using WebSockets).
+- Implement unit tests and end-to-end testing for frontend components.
