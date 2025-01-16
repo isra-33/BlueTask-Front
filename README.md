@@ -1,27 +1,90 @@
-# FrontTaskmanage
+Task Management System - Frontend
+The Task Management System - Frontend is a web-based interface built using Angular 18. It interacts with a Spring Boot backend and provides an intuitive way for users to manage tasks and track their progress.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
+Features
+Key Features:
+Dashboard: Displays an overview of tasks and their statuses using dynamic charts.
+Task Management: Add, edit, and delete tasks with confirmation dialogs.
+Navigation: Responsive sidebar for navigating between modules such as Dashboard, Tasks, and Settings.
+Logout: Secure logout functionality with a confirmation dialog.
+Role-based Access: Restricts users' access to specific components based on their role (Admin or User).
+Technologies Used
+Frontend:
+Angular 18
+Framework for building dynamic and responsive user interfaces.
+Utilizes Angular Router for seamless navigation.
+Implements role-based access control via Angular Guards.
+Tailwind CSS
+Utility-first CSS framework for responsive design.
+PrimeNG
+UI component library for dialogs, toasts, and confirmation pop-ups.
+ngx-echarts
+Dynamic charts to display task statistics.
+Authentication:
+Session-based authentication using JWT tokens for secure access.
+Prerequisites
+To run the frontend project, ensure you have the following installed:
 
-## Development server
+Node.js (16.x or higher)
+Angular CLI (18.x)
+Getting Started
+1. Clone the Repository:
+bash
+Copier
+Modifier
+git clone https://github.com/your-username/task-management-system-frontend.git
+cd task-management-system-frontend
+2. Install Dependencies:
+Run the following command to install all required dependencies:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+bash
+Copier
+Modifier
+npm install
+3. Start the Development Server:
+Start the Angular development server by running:
 
-## Code scaffolding
+bash
+Copier
+Modifier
+ng serve
+This will run the application on http://localhost:4200.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. Interact with the Backend:
+Ensure that the backend (Spring Boot) is running on http://localhost:8080, as the frontend communicates with the backend through RESTful APIs.
 
-## Build
+Project Structure
+src/app
+components: Contains Angular components like HomeComponent, TaskComponent, DashboardComponent, etc.
+services: Service classes responsible for API communication, such as AuthService, TaskService, etc.
+guards: Contains guards to manage route access based on user roles (e.g., AuthGuard).
+models: Contains TypeScript interfaces for data structures, such as Task, User, etc.
+assets: Static files like images, logos, and styles.
+src/environments
+Environment configuration files (environment.ts and environment.prod.ts) for development and production setups.
+How to Use
+Login:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Use the login form to authenticate with the backend using valid credentials.
+Roles (e.g., Admin, User) determine the available functionality.
+Dashboard:
 
-## Running unit tests
+View the dashboard with statistics such as total tasks, completed tasks, and pending tasks displayed in dynamic charts.
+Task Management:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Add, edit, and delete tasks.
+Confirm actions using confirmation dialogs powered by PrimeNG.
+Settings:
 
-## Running end-to-end tests
+Update user preferences and manage settings for your account.
+Logout:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Click the logout button in the top-right corner to log out securely. A confirmation dialog will prompt before logout.
+Testing
+The application is tested in the following environments:
+Browsers: Chrome, Firefox, and Edge.
+Responsiveness: Optimized for various screen sizes and devices.
+Future Enhancements
+Implement persistent storage with a backend database (currently using H2 in-memory database for backend).
+Add real-time updates (e.g., using WebSockets).
+Implement unit tests and end-to-end testing for frontend components
