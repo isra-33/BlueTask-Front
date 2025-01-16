@@ -37,11 +37,7 @@ To run the frontend project, ensure you have the following installed:
 ## Getting Started
 
 ### 1. Clone the Repository:
-```bash
-git clone https://github.com/your-username/task-management-system-frontend.git
-cd task-management-system-frontend
-### 2. Install Dependencies:  npm install
-### 3. Start the Development Server: ng serve
+
 ## Project Structure
 
 - **src/app**
